@@ -1,28 +1,16 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-function NavBar() {
-  const navigate = useNavigate();
-
-  const handleLinkClick = () => {
-    navigate("/recipes");
-  };
-
+const NavBar = () => {
   return (
     <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <button onClick={handleLinkClick}>Recipes</button>
-        </li>
-        <li>
-          <Link to="/recipe-form">Add Recipe</Link>
-        </li>
-      </ul>
+      <h1>Recipe App</h1>
+      <div className="links">
+        <Link to="/">Home</Link>
+        <Link to="/search-form">Search Recipes</Link>
+      </div>
     </nav>
   );
-}
+};
 
 export default NavBar;

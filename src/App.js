@@ -1,54 +1,55 @@
+
 import "./App.css";
 import axios from "axios";
 import NavBar from "./components/NavBar";
 import Recipes from "./components/Recipes";
-import RecipeForm from "./components/RecipeForm";
 import RecipeGrid from "./components/RecipeGrid";
+import SearchForm from "./components/SearchForm";
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
-  const [shouldRefresh, setShouldRefresh] = useState(false);
+  const [query, setQuery] = useState("");
 
   const app_Key = process.env.REACT_APP_APP_KEY;
   const app_Id = process.env.REACT_APP_APP_ID;
 
   useEffect(() => {
+    const url = `https://api.edamam.com/api/recipes/v2?type=any&app_id=${app_Id}&app_key=${app_Key}&diet=balanced&q=${query}`;
     axios
-      .get(
-        `https://api.edamam.com/api/recipes/v2?type=any&app_id=${app_Id}&app_key=${app_Key}&diet=balanced`
-      )
+      .get(url)
       .then((response) => {
-        console.log(response.data.hits);
         setRecipes(response.data.hits);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [shouldRefresh]);
+  }, [query, app_Id, app_Key]);
 
   return (
-    <div>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<RecipeGrid recipes={recipes} />} />
-        <Route
-          path="/recipe-form"
-          element={
-            <RecipeForm
-              setRecipesProps={setRecipes}
-              setShouldRefreshProps={setShouldRefresh}
-            />
-          }
-        />
-      </Routes>
-    </div>
+    <Router>
+      <div>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/recipes"
+            element={
+              <div>
+                <SearchForm setQuery={setQuery} />
+                <RecipeGrid recipes={recipes} />
+              </div>
+            }
+          />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
 export default App;
-
 
 
 
