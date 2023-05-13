@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/NavBar';
 import Recipes from './components/Recipes';
@@ -14,7 +14,6 @@ function App() {
     <div>
       <Router>
         <NavBar />
-        <Switch>
           <Route exact path="/">
             <HomePage />
           </Route>
@@ -31,7 +30,6 @@ function App() {
           <Route path="/register">
             <Registration />
           </Route>
-        </Switch>
       </Router>
     </div>
   );
