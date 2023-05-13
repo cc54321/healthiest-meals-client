@@ -1,56 +1,43 @@
-
-import "./App.css";
-import axios from "axios";
-import NavBar from "./components/NavBar";
-import Recipes from "./components/Recipes";
-import RecipeGrid from "./components/RecipeGrid";
-import SearchForm from "./components/SearchForm";
-import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import './App.css';
+import NavBar from './components/NavBar';
+import Recipes from './components/Recipes';
+import SearchForm from './components/SearchForm';
+import Favorites from './pages/Favorites';
+import HomePage from './pages/HomePage';
+import Login from './pages/Login';
+import Registration from './pages/Registration';
 
 function App() {
-  const [recipes, setRecipes] = useState([]);
-  const [query, setQuery] = useState("");
-
-  const app_Key = process.env.REACT_APP_APP_KEY;
-  const app_Id = process.env.REACT_APP_APP_ID;
-
-  useEffect(() => {
-    const url = `https://api.edamam.com/api/recipes/v2?type=any&app_id=${app_Id}&app_key=${app_Key}&diet=balanced&q=${query}`;
-    axios
-      .get(url)
-      .then((response) => {
-        setRecipes(response.data.hits);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [query, app_Id, app_Key]);
-
   return (
-    <Router>
-      <div>
+    <div>
+      <Router>
         <NavBar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route
-            path="/recipes"
-            element={
-              <div>
-                <SearchForm setQuery={setQuery} />
-                <RecipeGrid recipes={recipes} />
-              </div>
-            }
-          />
-        </Routes>
-      </div>
-    </Router>
+        <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route path="/search">
+            <SearchForm />
+            <Recipes />
+          </Route>
+          <Route path="/favorites">
+            <Favorites />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/register">
+            <Registration />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }
 
 export default App;
-
 
 
 
