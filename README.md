@@ -6,7 +6,7 @@
 
 4 allow all visitors to search for recipes
 
-5 allow registerd users to save recipes to a favorites page.
+5 allow registered users to save recipes to a favorites page.
 
 6 integrate api using axios
 
@@ -18,4 +18,4 @@
 
 10 create secure registration and login page
 
-11 create  a favorites page to be accessed by loged in users
+11 create  a favorites page to be accessed by logged in users
