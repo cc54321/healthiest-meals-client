@@ -1,18 +1,18 @@
 
-import RecipeCard from "./RecipeCard";
+// import RecipeCard from "./RecipeCard";
 
-function Recipes({ recipes }) {
-  return (
-    <div>
-      {recipes.map((recipe) => (
-        <RecipeCard recipe={recipe} key={recipe.recipe.uri} />
-      ))}
-    </div>
-  );
-}
+// function Recipes({ recipes }) {
+//   return (
+//     <div>
+//       {recipes.map((recipe) => (
+//         <RecipeCard recipe={recipe} key={recipe.recipe.uri} />
+//       ))}
+//     </div>
+//   );
+// }
 
 
-export default Recipes;
+// export default RecipeCard;
 
 
 

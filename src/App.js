@@ -1,45 +1,30 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, } from 'react-router-dom';
-import './App.css';
-import NavBar from './components/NavBar';
-import Recipes from './components/Recipes';
-import SearchForm from './components/SearchForm';
-import Favorites from './pages/Favorites';
-import HomePage from './pages/HomePage';
-import Login from './pages/Login';
-import Registration from './pages/Registration';
+
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import NavBar from "./components/NavBar";
+import Recipes from "./components/Recipes";
+import SearchForm from "./components/SearchForm";
+import Favorites from "./Pages/Favorites";
+import HomePage from "./Pages/HomePage";
+import Login from "./Pages/Login";
+import Registration from "./Pages/Registration";
 
 function App() {
-  return (
-    <div>
-      <Router>
-        <NavBar />
-          <Route exact path="/">
-            <HomePage />
-          </Route>
-          <Route path="/search">
-            <SearchForm />
-            <Recipes />
-          </Route>
-          <Route path="/favorites">
-            <Favorites />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/register">
-            <Registration />
-          </Route>
-      </Router>
-    </div>
-  );
+	return (
+		<div>
+			<NavBar />
+			<Routes>
+				<Route exact path="/" element={<HomePage />} />
+				<Route path="/favorites" element={<Favorites />} />
+				<Route path="/login" element={<Login />} />
+				<Route path="/register" element={<Registration />} />
+			</Routes>
+		</div>
+	);
 }
 
 export default App;
-
-
-
-
 
 
 
