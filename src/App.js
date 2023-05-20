@@ -13,18 +13,37 @@ import Registration from "./Pages/Registration";
 function App() {
 	return (
 		<div>
-			<NavBar />
-			<Routes>
-				<Route exact path="/" element={<HomePage />} />
-				<Route path="/favorites" element={<Favorites />} />
-				<Route path="/login" element={<Login />} />
-				<Route path="/register" element={<Registration />} />
-			</Routes>
+		  <NavBar />
+		  <Routes>
+			<Route path="/" element={<HomePage />} />
+			<Route path="/favorites" element={<Favorites />} />
+			<Route path="/login" element={<Login />} />
+			<Route path="/register" element={<Registration />} />
+			<Route path="/recipes" element={<Recipes />} />
+		  </Routes>
 		</div>
 	);
-}
+  }
+  
+  export default App;
+  
 
-export default App;
+
+// function App() {
+// 	return (
+// 		<div>
+// 			<NavBar />
+// 			<Routes>
+// 				<Route exact path="/" element={<HomePage />} />
+// 				<Route path="/favorites" element={<Favorites />} />
+// 				<Route path="/login" element={<Login />} />
+// 				<Route path="/register" element={<Registration />} />
+// 			</Routes>
+// 		</div>
+// 	);
+// }
+
+// export default App;
 
 
 
